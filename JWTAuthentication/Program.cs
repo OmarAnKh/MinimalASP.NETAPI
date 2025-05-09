@@ -37,11 +37,11 @@ app.MapGet("/secret", () => "This is protected")
 app.MapPost("/login", ([FromBody] LoginRequest login, JwtTokenGenerator tokenGenerator) =>
 {
    
-    var token = tokenGenerator.GenerateToken(login.Username);
+    var token = tokenGenerator.GenerateToken(login);
     return Results.Ok(new { token });
 });
 
 
 app.Run();
 
-public record LoginRequest(string Username, string Password);
+public record LoginRequest(string Username, string Password,string FirstName,string LastName);

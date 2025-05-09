@@ -32,9 +32,9 @@ namespace JWTAuthentication.Services
             public int UserId { get; set; }
         }
         
-        public string GenerateToken(string username)
+        public string GenerateToken(LoginRequest loginRequest)
         {
-            var user = ValidateUserCredentials("Omar", "Khalili");
+            var user = ValidateUserCredentials(loginRequest.Username, loginRequest.Password);
             if (user == null)
             {
                 return null;
